@@ -1,60 +1,109 @@
 from tkinter import *
 import random
+from tkinter import messagebox as msg
 root=Tk()
 root.geometry('500x500')
 root.title('TicTacToe')
+info=Label(root,font='lucida 10 bold',pady=10,text='Welcome to TicTacToe Game:\nRules:\n1.This is a 2 player Game, Player who plays first is player1 and has symbol X.\n2:One has to try making a streak of 3 in a row column or diagonal.\n3.One who completes step 2 first wins the game.')
+info.pack()
+Label(root,font='lucida 13 bold',pady=15,text='Player1 - X\t\tPlayer2 - O').pack()
+root.wm_iconbitmap('icon.ico')
 
 def cellselection(text,ch):
     global l
     if text=='1':
         b1['text']=ch
         l.remove(text)
-        comp()
     elif text=='2':
         b2['text']=ch
         l.remove(text)
-        comp()
     elif text=='3':
         b3['text']=ch
         l.remove(text)
-        comp()
     elif text=='4':
-        b4['text']=ch
+        b4['text'] =ch
         l.remove(text)
-        comp()
     elif text=='5':
         b5['text']=ch
         l.remove(text)
-        comp()
     elif text=='6':
         b6['text']=ch
         l.remove(text)
-        comp()
     elif text=='7':
         b7['text']=ch
         l.remove(text)
-        comp()
     elif text=='8':
         b8['text']=ch
         l.remove(text)
-        comp()
     else:
         b9['text']=ch
         l.remove(text)
-        comp()
 
+def checkwinner(player1list,player2list):
+    if '1' in player1list and '2' in player1list and '3' in player1list:
+        msg.showinfo('Winner info','Player 1 wins the Game !!!')
+    elif '1' in player2list and '2' in player2list and '3' in player2list:
+        msg.showinfo('Winner info', 'Player 2 wins the Game !!!')
+    elif '4' in player1list and '5' in player1list and '6' in player1list:
+        msg.showinfo('Winner info', 'Player 1 wins the Game !!!')
+    elif '4' in player2list and '5' in player2list and '6' in player2list:
+        msg.showinfo('Winner info', 'Player 2 wins the Game !!!')
+    elif '7' in player1list and '8' in player1list and '9' in player1list:
+        msg.showinfo('Winner info', 'Player 1 wins the Game !!!')
+    elif '7' in player2list and '8' in player2list and '9' in player2list:
+        msg.showinfo('Winner info', 'Player 2 wins the Game !!!')
+    elif '1' in player1list and '4' in player1list and '7' in player1list:
+        msg.showinfo('Winner info', 'Player 1 wins the Game !!!')
+    elif '1' in player2list and '4' in player2list and '7' in player2list:
+        msg.showinfo('Winner info', 'Player 2 wins the Game !!!')
+    elif '2' in player1list and '5' in player1list and '8' in player1list:
+        msg.showinfo('Winner info', 'Player 1 wins the Game !!!')
+    elif '2' in player2list and '5' in player2list and '8' in player2list:
+        msg.showinfo('Winner info', 'Player 2 wins the Game !!!')
+    elif '3' in player1list and '6' in player1list and '9' in player1list:
+        msg.showinfo('Winner info', 'Player 1 wins the Game !!!')
+    elif '3' in player2list and '6' in player2list and '9' in player2list:
+        msg.showinfo('Winner info', 'Player 2 wins the Game !!!')
+    elif '1' in player1list and '5' in player1list and '9' in player1list:
+        msg.showinfo('Winner info', 'Player 1 wins the Game !!!')
+    elif '1' in player2list and '5' in player2list and '9' in player2list:
+        msg.showinfo('Winner info', 'Player 2 wins the Game !!!')
+    elif '3' in player1list and '5' in player1list and '7' in player1list:
+        msg.showinfo('Winner info', 'Player 1 wins the Game !!!')
+    elif '3' in player2list and '5' in player2list and '7' in player2list:
+        msg.showinfo('Winner info', 'Player 2 wins the Game !!!')
+    elif l==[]:
+        msg.showinfo('Winner info', 'Game Draw !!!')
+    else:
+        pass
+
+def player1(text):
+    global player2list
+    player1list.append(text)
+    print(player1list)
+    cellselection(text, 'X')
+    checkwinner(player1list, player2list)
+
+def player2(text):
+    global curr_player,player1list
+    player2list.append(text)
+    print(player2list)
+    curr_player=1
+    cellselection(text, 'O')
+    checkwinner(player1list,player2list)
 def click(event):
     text = event.widget.cget("text")
-    cellselection(text,'X')
-
-def comp():
-    global l
-    s=random.choice(l)
-    cellselection(s,'O')
-    l.remove(s)
-
+    global curr_player
+    if curr_player==1:
+        curr_player=2
+        player1(text)
+    else:
+        player2(text)
 
 l=['1','2','3','4','5','6','7','8','9']
+curr_player=1
+player1list=[]
+player2list=[]
 #------------------------------------------------------------------------
 f=Frame(root,padx=10,pady=15,bg='grey')
 f.pack()
