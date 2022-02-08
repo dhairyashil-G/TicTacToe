@@ -83,15 +83,15 @@ def checkwinner(player1list, player2list):
 
 def replay():
     global l, player1list, player2list
-    b1['text'] = '1'
-    b2['text'] = '2'
-    b3['text'] = '3'
-    b4['text'] = '4'
-    b5['text'] = '5'
-    b6['text'] = '6'
-    b7['text'] = '7'
-    b8['text'] = '8'
-    b9['text'] = '9'
+    b1['text'] = '-'
+    b2['text'] = '-'
+    b3['text'] = '-'
+    b4['text'] = '-'
+    b5['text'] = '-'
+    b6['text'] = '-'
+    b7['text'] = '-'
+    b8['text'] = '-'
+    b9['text'] = '-'
     l = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     player1list = []
     player2list = []
@@ -119,7 +119,7 @@ def player2(text):
 
 
 def click(event):
-    text = event.widget.cget("text")
+    text = event.widget._name
     global curr_player
     if curr_player == 1:
         curr_player = 2
@@ -135,44 +135,44 @@ player2list = []
 # ------------------------------------------------------------------------
 f = Frame(root, padx=10, pady=15, bg='grey')
 f.pack()
-b1 = Button(f, text='1', font='lucida 20 bold', padx=10)
+b1 = Button(f, text='-',name='1', font='lucida 20 bold', padx=10)
 b1.pack(side=LEFT, padx=10, pady=10)
 b1.bind('<Button-1>', click)
 
-b2 = Button(f, text='2', font='lucida 20 bold', padx=10)
+b2 = Button(f, text='-',name='2', font='lucida 20 bold', padx=10)
 b2.pack(side=LEFT, padx=10, pady=10)
 b2.bind('<Button-1>', click)
 
-b3 = Button(f, text='3', font='lucida 20 bold', padx=10)
+b3 = Button(f, text='-',name='3', font='lucida 20 bold', padx=10)
 b3.pack(side=LEFT, padx=10, pady=10)
 b3.bind('<Button-1>', click)
 # ------------------------------------------------------------------------
 f = Frame(root, padx=10, pady=15, bg='grey')
 f.pack()
-b4 = Button(f, text='4', font='lucida 20 bold', padx=10)
+b4 = Button(f, text='-',name='4', font='lucida 20 bold', padx=10)
 b4.pack(side=LEFT, padx=10, pady=10)
 b4.bind('<Button-1>', click)
 
-b5 = Button(f, text='5', font='lucida 20 bold', padx=10)
+b5 = Button(f, text='-',name='5', font='lucida 20 bold', padx=10)
 b5.pack(side=LEFT, padx=10, pady=10)
 b5.bind('<Button-1>', click)
 
-b6 = Button(f, text='6', font='lucida 20 bold', padx=10)
+b6 = Button(f, text='-',name='6', font='lucida 20 bold', padx=10)
 b6.pack(side=LEFT, padx=10, pady=10)
 b6.bind('<Button-1>', click)
 
 # ------------------------------------------------------------------------
 f = Frame(root, padx=10, pady=15, bg='grey')
 f.pack()
-b7 = Button(f, text='7', font='lucida 20 bold', padx=10)
+b7 = Button(f, text='-',name='7', font='lucida 20 bold', padx=10)
 b7.pack(side=LEFT, padx=10, pady=10)
 b7.bind('<Button-1>', click)
 
-b8 = Button(f, text='8', font='lucida 20 bold', padx=10)
+b8 = Button(f, text='-',name='8', font='lucida 20 bold', padx=10)
 b8.pack(side=LEFT, padx=10, pady=10)
 b8.bind('<Button-1>', click)
 
-b9 = Button(f, text='9', font='lucida 20 bold', padx=10)
+b9 = Button(f, text='-',name='9', font='lucida 20 bold', padx=10)
 b9.pack(side=LEFT, padx=10, pady=10)
 b9.bind('<Button-1>', click)
 # ------------------------------------------------------------------------
