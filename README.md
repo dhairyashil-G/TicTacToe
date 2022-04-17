@@ -1,3 +1,3 @@
 # TicTacToe
-Single player TicTactoe game
+Single player TicTactoe game.
 Built completely in python using tkinter package.
